@@ -5,12 +5,13 @@ import "time"
 type Ticket struct {
 	id           string
 	content      string
-	activeWindow ActiveWindow
+	activeWindow ActiveWindow `gorm:"constraint:OnDelete:CASCADE;"`
 }
 
 type ActiveWindow struct {
-	start time.Time
-	end   time.Time
+	start    time.Time
+	end      time.Time
+	TicketId string
 }
 
 func NewTicket(id, content string, start time.Time, end time.Time) *Ticket {
