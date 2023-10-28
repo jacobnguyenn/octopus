@@ -11,7 +11,7 @@ import (
 
 	pkgerrors "github.com/pkg/errors"
 
-	"ddd-sample/registry"
+	"ddd-sample/wire"
 )
 
 func newServerCommand() *cobra.Command {
@@ -26,7 +26,7 @@ func newServerCommand() *cobra.Command {
 			var wg sync.WaitGroup
 			errCh := make(chan error, 1)
 
-			srv := registry.InitializeServer()
+			srv := wire.InitializeServer()
 			l, err := net.Listen(
 				"tcp",
 				fmt.Sprintf(

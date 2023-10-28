@@ -19,6 +19,6 @@ var (
 )
 
 func Execute(ctx context.Context) error {
-
+	rootCmd.AddCommand(newServerCommand())
 	return rootCmd.ExecuteContext(ctx)
 }

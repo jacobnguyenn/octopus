@@ -1,11 +1,13 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 type Ticket struct {
-	id           string
-	content      string
-	activeWindow ActiveWindow `gorm:"constraint:OnDelete:CASCADE;"`
+	Id           string
+	Content      string
+	ActiveWindow ActiveWindow
 }
 
 type ActiveWindow struct {
@@ -16,9 +18,9 @@ type ActiveWindow struct {
 
 func NewTicket(id, content string, start time.Time, end time.Time) *Ticket {
 	return &Ticket{
-		id:      id,
-		content: content,
-		activeWindow: ActiveWindow{
+		Id:      id,
+		Content: content,
+		ActiveWindow: ActiveWindow{
 			start: start,
 			end:   end,
 		},
@@ -26,11 +28,11 @@ func NewTicket(id, content string, start time.Time, end time.Time) *Ticket {
 }
 
 func (t *Ticket) GetId() string {
-	return t.id
+	return t.Id
 }
 
 func (t *Ticket) GetContent() string {
-	return t.content
+	return t.Content
 }
 
 func (a *ActiveWindow) GetStart() time.Time {
@@ -42,13 +44,13 @@ func (a *ActiveWindow) GetEnd() time.Time {
 }
 
 func (t *Ticket) GetActiveWindow() *ActiveWindow {
-	return &t.activeWindow
+	return &t.ActiveWindow
 }
 
 func (t *Ticket) GetStart() time.Time {
-	return t.activeWindow.start
+	return t.ActiveWindow.start
 }
 
 func (t *Ticket) GetEnd() time.Time {
-	return t.activeWindow.end
+	return t.ActiveWindow.end
 }

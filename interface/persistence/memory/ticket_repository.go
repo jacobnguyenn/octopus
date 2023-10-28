@@ -23,15 +23,17 @@ const (
 
 func newInmemDB() (*gorm.DB, error) {
 	db, err := gorm.Open(sqlite.Open("file::memory:?cache=shared"), &gorm.Config{
-		Logger: logger.Default.LogMode(logger.Silent),
+		Logger: logger.Default,
 	})
 	if err != nil {
 		return nil, err
 	}
-	db.AutoMigrate(
+	if err := db.AutoMigrate(
 		&model.Ticket{},
 		&model.ActiveWindow{},
-	)
+	); err != nil {
+		return nil, err
+	}
 	return db, nil
 }
 
