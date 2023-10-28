@@ -9,8 +9,8 @@ type TicketService struct {
 	repo repo.ITicketRepo
 }
 
-func NewTicketService(repo repo.ITicketRepo) *TicketService {
-	return &TicketService{
+func NewTicketService(repo repo.ITicketRepo) TicketService {
+	return TicketService{
 		repo: repo,
 	}
 }

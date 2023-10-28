@@ -35,7 +35,7 @@ func newInmemDB() (*gorm.DB, error) {
 	return db, nil
 }
 
-func NewTicketRepository() *ticketRepository {
+func NewTicketRepository() repo.ITicketRepo {
 	db, err := newInmemDB()
 	if err != nil {
 		panic(err)

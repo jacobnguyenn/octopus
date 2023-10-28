@@ -3,6 +3,7 @@ package dddsample.service.v1alpha1;
 option go_package = "ddd-sample/interface/transport/service/v1alpha1;svcv1alpha1";
 
 import "types/v1alpha1/types.proto";
+import "google/protobuf/timestamp.proto";
 
 service DDDSampleService {
     rpc CreateTicket(CreateTicketRequest) returns (CreateTicketResponse); 
@@ -15,6 +16,8 @@ message CreateTicketResponse {
 
 message CreateTicketRequest {
     string content=1;
+    google.protobuf.Timestamp start = 2;
+    google.protobuf.Timestamp end = 3;
 }
 
 message GetTicketRequest {

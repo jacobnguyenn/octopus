@@ -2,11 +2,12 @@ package usecase
 
 import (
 	"context"
+	"errors"
+	"time"
+
 	"ddd-sample/domain/model"
 	"ddd-sample/domain/repo"
 	"ddd-sample/domain/service"
-	"errors"
-	"time"
 
 	"github.com/google/uuid"
 )
@@ -36,6 +37,14 @@ var (
 	_                  ITicketUsecase = (*ticketUseCase)(nil)
 	ErrInValidArgument                = errors.New("invalid argument")
 )
+
+func NewTicketUseCase(workflow repo.IWorkflowRepo, ticketService service.TicketService, ticketRepo repo.ITicketRepo) ITicketUsecase {
+	return &ticketUseCase{
+		workflowRepo:  workflow,
+		ticketRepo:    ticketRepo,
+		ticketService: ticketService,
+	}
+}
 
 func (t *ticketUseCase) Create(content string, start time.Time, end time.Time) (id string, err error) {
 	ctx := context.TODO()
