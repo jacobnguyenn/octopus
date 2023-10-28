@@ -11,8 +11,8 @@ type Ticket struct {
 }
 
 type ActiveWindow struct {
-	start    time.Time
-	end      time.Time
+	Start    time.Time
+	End      time.Time
 	TicketId string
 }
 
@@ -21,8 +21,8 @@ func NewTicket(id, content string, start time.Time, end time.Time) *Ticket {
 		Id:      id,
 		Content: content,
 		ActiveWindow: ActiveWindow{
-			start: start,
-			end:   end,
+			Start: start,
+			End:   end,
 		},
 	}
 }
@@ -36,11 +36,11 @@ func (t *Ticket) GetContent() string {
 }
 
 func (a *ActiveWindow) GetStart() time.Time {
-	return a.start
+	return a.Start
 }
 
 func (a *ActiveWindow) GetEnd() time.Time {
-	return a.end
+	return a.End
 }
 
 func (t *Ticket) GetActiveWindow() *ActiveWindow {
@@ -48,9 +48,9 @@ func (t *Ticket) GetActiveWindow() *ActiveWindow {
 }
 
 func (t *Ticket) GetStart() time.Time {
-	return t.ActiveWindow.start
+	return t.ActiveWindow.Start
 }
 
 func (t *Ticket) GetEnd() time.Time {
-	return t.ActiveWindow.end
+	return t.ActiveWindow.End
 }
