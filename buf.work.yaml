@@ -1,0 +1,3 @@
+version: v1
+directories:
+  - interface/transport/proto

@@ -1,0 +1,8 @@
+syntax = "proto3";
+package dddsample.types.v1alpha1;
+option go_package = "ddd-sample/interface/transport/types/v1alpha1";
+
+message Ticket {
+    string id = 1;
+    string content=2;
+}

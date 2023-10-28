@@ -1,0 +1,26 @@
+syntax = "proto3";
+package dddsample.service.v1alpha1;
+option go_package = "ddd-sample/interface/transport/service/v1alpha1;svcv1alpha1";
+
+import "types/v1alpha1/types.proto";
+
+service DDDSampleService {
+    rpc CreateTicket(CreateTicketRequest) returns (CreateTicketResponse); 
+    rpc GetTicket(GetTicketRequest) returns (GetTicketResponse);
+}
+
+message CreateTicketResponse {
+    string id =1;
+}
+
+message CreateTicketRequest {
+    string content=1;
+}
+
+message GetTicketRequest {
+    string id=1;
+}
+
+message GetTicketResponse {
+    dddsample.types.v1alpha1.Ticket ticket =1;
+}
