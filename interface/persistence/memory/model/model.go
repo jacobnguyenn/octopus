@@ -31,13 +31,5 @@ func ToPersistenceModelTicket(in *model.Ticket) (out *Ticket) {
 }
 
 func ToDomainModelTicket(in *Ticket) (out *model.Ticket) {
-	return &model.Ticket{
-		Id:      in.Id,
-		Content: in.Content,
-		ActiveWindow: model.ActiveWindow{
-			Start:    in.ActiveWindow.start,
-			End:      in.ActiveWindow.end,
-			TicketId: in.Id,
-		},
-	}
+	return model.NewTicket(in.Id, in.Content, in.ActiveWindow.start, in.ActiveWindow.end)
 }

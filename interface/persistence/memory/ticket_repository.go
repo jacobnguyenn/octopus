@@ -30,8 +30,8 @@ func newInmemDB() (*gorm.DB, error) {
 		return nil, err
 	}
 	if err := db.AutoMigrate(
-		&domainModel.Ticket{},
-		&domainModel.ActiveWindow{},
+		&model.Ticket{},
+		&model.ActiveWindow{},
 	); err != nil {
 		return nil, err
 	}

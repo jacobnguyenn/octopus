@@ -5,9 +5,9 @@ import (
 )
 
 type Ticket struct {
-	Id           string
-	Content      string
-	ActiveWindow ActiveWindow
+	id           string
+	content      string
+	activeWindow ActiveWindow
 }
 
 type ActiveWindow struct {
@@ -18,9 +18,9 @@ type ActiveWindow struct {
 
 func NewTicket(id, content string, start time.Time, end time.Time) *Ticket {
 	return &Ticket{
-		Id:      id,
-		Content: content,
-		ActiveWindow: ActiveWindow{
+		id:      id,
+		content: content,
+		activeWindow: ActiveWindow{
 			Start: start,
 			End:   end,
 		},
@@ -28,11 +28,11 @@ func NewTicket(id, content string, start time.Time, end time.Time) *Ticket {
 }
 
 func (t *Ticket) GetId() string {
-	return t.Id
+	return t.id
 }
 
 func (t *Ticket) GetContent() string {
-	return t.Content
+	return t.content
 }
 
 func (a *ActiveWindow) GetStart() time.Time {
@@ -44,13 +44,13 @@ func (a *ActiveWindow) GetEnd() time.Time {
 }
 
 func (t *Ticket) GetActiveWindow() *ActiveWindow {
-	return &t.ActiveWindow
+	return &t.activeWindow
 }
 
 func (t *Ticket) GetStart() time.Time {
-	return t.ActiveWindow.Start
+	return t.activeWindow.Start
 }
 
 func (t *Ticket) GetEnd() time.Time {
-	return t.ActiveWindow.End
+	return t.activeWindow.End
 }
