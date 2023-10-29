@@ -38,3 +38,8 @@ func (w workflowRepository) End(ctx context.Context, workflowId string) error {
 	log.Printf("terminating workflow, id %s", workflowId)
 	return nil
 }
+
+func (w workflowRepository) Status(ctx context.Context, workflowId string) (string, error) {
+	// TODO implement me
+	return "running", nil
+}
